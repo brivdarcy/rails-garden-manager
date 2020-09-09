@@ -17,3 +17,4 @@ class UrlValidator < ActiveModel::EachValidator
 		hash["content-type"].start_with? 'image'
 	end
 end
+
