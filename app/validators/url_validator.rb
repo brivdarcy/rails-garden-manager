@@ -1,6 +1,8 @@
 class UrlValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    record.errors[attribute] << (options[:message] || "must be a valid URL") unless image_exists?(value)    
+     if value.match(URI.regexp)
+    	record.errors[attribute] << (options[:message] || "must be an image URL") unless image_exists?(value)
+    end 
   end
 
   # a URL may be technically well-formed but may 
