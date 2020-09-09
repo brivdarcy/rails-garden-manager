@@ -4,9 +4,6 @@ class UrlValidator < ActiveModel::EachValidator
     	record.errors[attribute] << (options[:message] || "must be an image URL") unless image_exists?(value)
     end 
   end
-
-  # a URL may be technically well-formed but may 
-  # not actually be valid, so this checks for both.
 	def image_exists?(url)
 		url = URI.parse(url)
 		http = Net::HTTP.new(url.host, url.port)
