@@ -6,5 +6,6 @@ class Plant < ApplicationRecord
 
   # add validation url syntax
   validates :image_url, format: { with: URI.regexp }
+  validates :image_url, url: true
   
 end
